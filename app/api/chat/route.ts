@@ -7,7 +7,24 @@ import { buildContextSuffix } from "@/lib/systemPrompt";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const AGENT_DIR = path.join(process.cwd(), "agent");
+import fs from "node:fs";
+
+function findAgentDir(): string {
+  const candidates = [
+    path.join(process.cwd(), "agent"),
+    // Netlify lambdas sometimes root at /var/task; included_files preserves tree.
+    path.join(process.cwd(), ".next", "server", "agent"),
+    path.resolve(__dirname ?? ".", "../../../agent"),
+    path.resolve(__dirname ?? ".", "../../../../agent"),
+  ];
+  for (const c of candidates) {
+    try {
+      if (fs.existsSync(path.join(c, "agent.yaml"))) return c;
+    } catch {}
+  }
+  return candidates[0];
+}
+const AGENT_DIR = findAgentDir();
 
 function resolveModel(): string {
   const agentId = process.env.LYZR_AGENT_ID;
@@ -45,6 +62,9 @@ export async function POST(req: NextRequest) {
   const encoder = new TextEncoder();
   const stream = new ReadableStream({
     async start(controller) {
+      let produced = 0;
+      const log = (s: string) => { try { console.log("[chat]", s); } catch {} };
+      log(`cwd=${process.cwd()} agentDir=${AGENT_DIR} hasAgentYaml=${fs.existsSync(path.join(AGENT_DIR, "agent.yaml"))}`);
       try {
         const result = query({
           prompt,
@@ -57,13 +77,21 @@ export async function POST(req: NextRequest) {
         });
 
         for await (const msg of result) {
+          log(`msg type=${msg.type}`);
           if (msg.type === "assistant" && typeof msg.content === "string") {
+            produced += msg.content.length;
             controller.enqueue(encoder.encode(msg.content));
           }
         }
+        if (produced === 0) {
+          const diag = `[no output from agent. cwd=${process.cwd()} agentDir=${AGENT_DIR} agentYaml=${fs.existsSync(path.join(AGENT_DIR, "agent.yaml"))}]`;
+          log(diag);
+          controller.enqueue(encoder.encode(diag));
+        }
         controller.close();
       } catch (err) {
-        const message = err instanceof Error ? err.message : String(err);
+        const message = err instanceof Error ? (err.stack || err.message) : String(err);
+        log(`ERROR ${message}`);
         controller.enqueue(encoder.encode(`\n\n[error: ${message}]`));
         controller.close();
       }

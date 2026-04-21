@@ -7,3 +7,8 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Bundle the agent/ knowledge directory with the serverless function so
+# gitclaw's loadKnowledge() can read it at runtime.
+[functions]
+  included_files = ["agent/**"]
