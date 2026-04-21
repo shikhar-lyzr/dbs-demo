@@ -61,11 +61,14 @@ function renderInline(text: string, isUser: boolean): string {
   const escaped = escapeHtml(text);
   if (isUser) return escaped;
   const linkClass = "underline font-medium text-red-700 hover:text-red-800";
-  return escaped.replace(
-    /\[([^\]]+)\]\(([^)\s]+)\)/g,
-    (_m, label, href) =>
-      `<a href="${href}" data-navparent="1" class="${linkClass}">${label}</a>`,
-  );
+  return escaped
+    .replace(
+      /\[([^\]]+)\]\(([^)\s]+)\)/g,
+      (_m, label, href) =>
+        `<a href="${href}" data-navparent="1" class="${linkClass}">${label}</a>`,
+    )
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<em>$2</em>");
 }
 
 function escapeHtml(s: string): string {
