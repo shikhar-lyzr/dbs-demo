@@ -159,11 +159,10 @@ Three products presented:
 ### Step 17 — "Important note" — Fees Summary
 - Screen title prompt: *"Fund your account with ₹25,000 in 30 days to avail maximum benefits"*
 - **Fall-below fee:** If MAB drops below **₹10,000**, charge is **6% of shortfall, up to ₹500**
-- **Debit card annual fee:** **₹199/year** for DBS Visa Classic card, charged if:
-  - Yearly spending is below **₹1,00,000**, AND
-  - MAB is below **₹50,000**, AND
-  - Total Relationship Value (TRV) is less than **₹2,00,000**
-  *(Waived if any one of the three thresholds is met)*
+- **Debit card annual fee:** **₹199/year** for DBS Visa Classic card, waived if any one of the following is met:
+  - Yearly debit card spending ≥ **₹1,00,000**, OR
+  - Monthly Average Balance ≥ **₹50,000**, OR
+  - Total Relationship Value (TRV) ≥ **₹2,00,000**
 - **TRV definition (verbatim):** *"TRV is across all accounts in a family and calculated by aggregating average quarterly saving account balances and end of period term deposits and investments."*
 - Checkbox: "I've read the above carefully"
 - Button: **CONTINUE**
