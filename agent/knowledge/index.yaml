@@ -1,0 +1,30 @@
+entries:
+  - path: onboarding-journey.md
+    tags: [onboarding, journey, steps]
+    priority: high
+    always_load: true
+
+  - path: onboarding-stuck-points.md
+    tags: [onboarding, faq, stuck]
+    priority: high
+    always_load: true
+
+  - path: products-and-fees.md
+    tags: [products, fees, mab, trv]
+    priority: high
+    always_load: true
+
+  - path: kyc-and-documents.md
+    tags: [kyc, pan, aadhaar, video-kyc, branch]
+    priority: high
+    always_load: true
+
+  - path: glossary.md
+    tags: [glossary, terms]
+    priority: medium
+    always_load: true
+
+  - path: complaints.md
+    tags: [complaints, grievance, escalation]
+    priority: medium
+    always_load: true
