@@ -59,12 +59,17 @@ export async function POST(req: NextRequest) {
   const prompt = formatHistory(messages);
   const systemPromptSuffix = buildContextSuffix(context ?? {});
 
+  const debugMode = req.nextUrl.searchParams.get("debug") === "1";
   const encoder = new TextEncoder();
   const stream = new ReadableStream({
     async start(controller) {
       let produced = 0;
-      const log = (s: string) => { try { console.log("[chat]", s); } catch {} };
-      log(`cwd=${process.cwd()} agentDir=${AGENT_DIR} hasAgentYaml=${fs.existsSync(path.join(AGENT_DIR, "agent.yaml"))}`);
+      const trace: string[] = [];
+      const log = (s: string) => {
+        try { console.log("[chat]", s); } catch {}
+        trace.push(s);
+      };
+      log(`cwd=${process.cwd()} agentDir=${AGENT_DIR} hasAgentYaml=${fs.existsSync(path.join(AGENT_DIR, "agent.yaml"))} hasLyzrKey=${!!process.env.LYZR_API_KEY} hasLyzrAgent=${!!process.env.LYZR_AGENT_ID}`);
       try {
         const result = query({
           prompt,
@@ -77,22 +82,30 @@ export async function POST(req: NextRequest) {
         });
 
         for await (const msg of result) {
-          log(`msg type=${msg.type}`);
-          if (msg.type === "assistant" && typeof msg.content === "string") {
-            produced += msg.content.length;
-            controller.enqueue(encoder.encode(msg.content));
+          const m = msg as { type: string; subtype?: string; content?: unknown; errorMessage?: string; stopReason?: string };
+          log(`msg type=${m.type}${m.subtype ? ` subtype=${m.subtype}` : ""}${m.stopReason ? ` stop=${m.stopReason}` : ""}${m.errorMessage ? ` err=${m.errorMessage}` : ""} contentLen=${typeof m.content === "string" ? m.content.length : "n/a"}`);
+
+          if (m.type === "assistant" && typeof m.content === "string" && m.content.length > 0) {
+            produced += m.content.length;
+            controller.enqueue(encoder.encode(m.content));
+          }
+          // Surface gitclaw error system messages to the client so we can see them.
+          if (m.type === "system" && m.subtype === "error" && typeof m.content === "string") {
+            controller.enqueue(encoder.encode(`\n[agent-error: ${m.content}]`));
           }
         }
         if (produced === 0) {
-          const diag = `[no output from agent. cwd=${process.cwd()} agentDir=${AGENT_DIR} agentYaml=${fs.existsSync(path.join(AGENT_DIR, "agent.yaml"))}]`;
-          log(diag);
+          const diag = `[no assistant output. trace:\n${trace.join("\n")}\n]`;
+          log("done with zero assistant output");
           controller.enqueue(encoder.encode(diag));
+        } else if (debugMode) {
+          controller.enqueue(encoder.encode(`\n\n[trace:\n${trace.join("\n")}\n]`));
         }
         controller.close();
       } catch (err) {
         const message = err instanceof Error ? (err.stack || err.message) : String(err);
-        log(`ERROR ${message}`);
-        controller.enqueue(encoder.encode(`\n\n[error: ${message}]`));
+        log(`THROW ${message}`);
+        controller.enqueue(encoder.encode(`\n\n[throw: ${message}]\n[trace:\n${trace.join("\n")}\n]`));
         controller.close();
       }
     },
