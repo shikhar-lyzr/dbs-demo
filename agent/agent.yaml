@@ -1,0 +1,15 @@
+spec_version: "0.1.0"
+name: bank-help
+version: 1.0.0
+description: Help users who get stuck on the DBS Bank India website (dbs.com/in) or the digibank online banking experience.
+
+model:
+  preferred: "lyzr:${LYZR_AGENT_ID}@https://agent-prod.studio.lyzr.ai/v4"
+  constraints:
+    temperature: 0.3
+    max_tokens: 800
+
+tools: []
+
+runtime:
+  max_turns: 6
