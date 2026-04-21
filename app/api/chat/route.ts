@@ -29,11 +29,18 @@ function findBundledAgentDir(): string {
 // /tmp/agent once per cold start and use that.
 function prepareAgentDir(): string {
   const bundled = findBundledAgentDir();
-  const writableRoot = process.env.NETLIFY || process.env.AWS_LAMBDA_FUNCTION_NAME
-    ? "/tmp"
-    : null;
-  if (!writableRoot) return bundled;
-  const dest = path.join(writableRoot, "agent");
+  // Detect read-only deploy filesystem by probing the bundled dir directly.
+  // Netlify/Lambda roots at /var/task and only /tmp is writable. NETLIFY is a
+  // build-time-only var so we cannot rely on it at runtime.
+  let bundledWritable = false;
+  try {
+    const probe = path.join(bundled, `.write-probe-${process.pid}`);
+    fs.writeFileSync(probe, "");
+    fs.unlinkSync(probe);
+    bundledWritable = true;
+  } catch {}
+  if (bundledWritable) return bundled;
+  const dest = "/tmp/agent";
   try {
     if (!fs.existsSync(path.join(dest, "agent.yaml"))) {
       fs.cpSync(bundled, dest, { recursive: true });
