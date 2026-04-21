@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ["gitclaw"],
+  devIndicators: {
+    appIsrStatus: false,
+    buildActivity: false,
+  },
   async headers() {
     return [
       {

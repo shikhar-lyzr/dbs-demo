@@ -28,3 +28,8 @@ entries:
     tags: [complaints, grievance, escalation]
     priority: medium
     always_load: true
+
+  - path: page-links.md
+    tags: [links, navigation, urls]
+    priority: high
+    always_load: true

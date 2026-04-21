@@ -1,18 +1,49 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ChatMessage, PageContext } from "@/lib/types";
 import { MessageList } from "./MessageList";
 import { useParentContext } from "./useParentContext";
 
 export function ChatWidget() {
   const context: PageContext = useParentContext();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [pending, setPending] = useState("");
   const [sending, setSending] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
+  const rootRef = useRef<HTMLDivElement | null>(null);
+
+  // Tell the parent page whether we're collapsed (just a button) or expanded
+  // (full chat panel) so it can resize the iframe accordingly.
+  useEffect(() => {
+    try {
+      window.parent?.postMessage(
+        { type: "bank-help-resize", state: open ? "open" : "collapsed" },
+        "*",
+      );
+    } catch {}
+  }, [open]);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    function onClick(e: MouseEvent) {
+      const target = e.target as HTMLElement | null;
+      const a = target?.closest?.("a[data-navparent='1']") as HTMLAnchorElement | null;
+      if (!a) return;
+      const href = a.getAttribute("href");
+      if (!href) return;
+      e.preventDefault();
+      // Ask the parent (bank page) to navigate. Same-origin fallback: open in parent.
+      try {
+        window.parent?.postMessage({ type: "bank-help-navigate", href }, "*");
+      } catch {}
+    }
+    el.addEventListener("click", onClick);
+    return () => el.removeEventListener("click", onClick);
+  }, []);
 
   async function send() {
     const text = input.trim();
@@ -57,18 +88,20 @@ export function ChatWidget() {
 
   if (!open) {
     return (
-      <button
-        onClick={() => setOpen(true)}
-        className="fixed bottom-5 right-5 h-14 w-14 rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700"
-        aria-label="Open help chat"
-      >
-        ?
-      </button>
+      <div ref={rootRef} className="fixed inset-0 flex items-end justify-end p-2 bg-transparent pointer-events-none">
+        <button
+          onClick={() => setOpen(true)}
+          className="h-12 w-12 rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700 text-xl font-bold pointer-events-auto"
+          aria-label="Open help chat"
+        >
+          ?
+        </button>
+      </div>
     );
   }
 
   return (
-    <div className="fixed bottom-5 right-5 w-[360px] h-[520px] rounded-2xl shadow-2xl bg-white flex flex-col overflow-hidden border border-gray-200">
+    <div ref={rootRef} className="fixed inset-0 rounded-2xl shadow-2xl bg-white flex flex-col overflow-hidden border border-gray-200">
       <header className="flex items-center justify-between px-4 py-3 bg-red-600 text-white">
         <div>
           <div className="font-semibold text-sm">DBS Help</div>
@@ -77,7 +110,7 @@ export function ChatWidget() {
         <button onClick={() => setOpen(false)} aria-label="Close" className="text-white text-lg leading-none">×</button>
       </header>
 
-      <MessageList messages={messages} pending={pending} />
+      <MessageList messages={messages} pending={pending} loading={sending} />
 
       <footer className="border-t border-gray-200 p-2 flex gap-2">
         <input

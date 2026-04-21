@@ -55,6 +55,60 @@
     document.getElementById('demo-toggle-btn').addEventListener('click', toggleMode);
   }
 
+  /* ── Move the help iframe inside the phone-frame ─────────── */
+  var _iframeState = 'collapsed';
+
+  function applyIframeStyles(iframe, state) {
+    _iframeState = state;
+    // Sit above a fixed bottom button bar if one exists.
+    var bottomBar = document.querySelector('.bottom-btn-area');
+    var bottomOffset = bottomBar ? (bottomBar.getBoundingClientRect().height + 14) : 14;
+    iframe.style.position = 'absolute';
+    iframe.style.top = 'auto';
+    iframe.style.left = 'auto';
+    iframe.style.right = '12px';
+    iframe.style.bottom = bottomOffset + 'px';
+    iframe.style.border = '0';
+    iframe.style.background = 'transparent';
+    iframe.style.zIndex = '50';
+    iframe.style.transition = 'width 180ms ease, height 180ms ease, box-shadow 180ms ease, border-radius 180ms ease';
+    iframe.style.colorScheme = 'light';
+    if (state === 'open') {
+      iframe.style.width = 'calc(100% - 24px)';
+      iframe.style.maxWidth = '360px';
+      iframe.style.height = '70%';
+      iframe.style.maxHeight = '480px';
+      iframe.style.borderRadius = '16px';
+      iframe.style.boxShadow = '0 10px 30px rgba(0,0,0,0.25)';
+    } else {
+      // Collapsed: just enough room for the floating "?" button.
+      iframe.style.width = '72px';
+      iframe.style.maxWidth = '72px';
+      iframe.style.height = '72px';
+      iframe.style.maxHeight = '72px';
+      iframe.style.borderRadius = '50%';
+      iframe.style.boxShadow = 'none';
+    }
+  }
+
+  function mountHelpIframeInFrame() {
+    var iframe = document.getElementById('bank-help-iframe');
+    var frame = document.querySelector('.phone-frame');
+    if (!iframe || !frame) return;
+    var cs = window.getComputedStyle(frame);
+    if (cs.position === 'static') frame.style.position = 'relative';
+    if (iframe.parentElement !== frame) frame.appendChild(iframe);
+    applyIframeStyles(iframe, _iframeState);
+  }
+
+  // Listen for resize messages from the widget.
+  window.addEventListener('message', function (e) {
+    if (!e.data || e.data.type !== 'bank-help-resize') return;
+    var iframe = document.getElementById('bank-help-iframe');
+    if (!iframe) return;
+    applyIframeStyles(iframe, e.data.state === 'open' ? 'open' : 'collapsed');
+  });
+
   /* ── Wrap content in phone frame if not already done ─────── */
   function ensurePhoneFrame() {
     // Only wrap if there isn't already a phone-frame
@@ -136,6 +190,16 @@
   function init() {
     buildDemoBar();
     applyMode(getMode());
+    // Mount the help iframe inside the phone frame (once embed.js has injected it).
+    // Try immediately and retry a few times since embed.js may load async.
+    var mountTries = 0;
+    (function tryMount() {
+      mountHelpIframeInFrame();
+      if (!document.getElementById('bank-help-iframe') && mountTries < 20) {
+        mountTries++;
+        setTimeout(tryMount, 100);
+      }
+    })();
     wireFields();
 
     // Push initial page+step context

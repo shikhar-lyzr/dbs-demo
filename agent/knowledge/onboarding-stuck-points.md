@@ -38,6 +38,12 @@ Lakshmi Vilas Bank (LVB) merged into DBS Bank India in November 2020. If you hav
 **Q: Should I link an existing account or open a new one?**
 Tap **LINK ACCOUNT** if you already have an LVB or DBS savings account and just want to access it through digibank. Tap **OPEN A SAVINGS ACCOUNT** if you are opening a brand-new account with DBS.
 
+**Q: Which account should I open here?**
+On this screen you're choosing the *product*, not a specific account tier — only **OPEN A SAVINGS ACCOUNT** is available for new customers. Tap that to begin the savings account application. You'll pick a specific tier (digiSavings, Growth Plus, or Growth Max) later in the flow once your basic details and KYC are done.
+
+**Q: What's the difference between LINK ACCOUNT and OPEN A SAVINGS ACCOUNT?**
+**LINK ACCOUNT** is for users who already have an LVB or DBS account and want to see it inside digibank. **OPEN A SAVINGS ACCOUNT** starts a brand-new savings account application for users who don't bank with DBS yet.
+
 ---
 
 ## Step 4 — "Tell us a bit about yourself"

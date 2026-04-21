@@ -22,48 +22,38 @@
         <!-- Screen Content -->
         <div class="screen-content">
 
-          <!-- SMS Notification Bar (demo — shows OTP for walkthrough) -->
-          <div class="sms-notification">
-            <div class="sms-header">
-              <span class="sms-sender">JD-DBSBNK-S · now</span>
-              <span class="sms-time">now</span>
-            </div>
-            <div class="sms-body">
-              Your DBS digibank OTP is <span class="sms-otp">686866</span>. Valid for 90 seconds. Do not share this OTP with anyone.
-            </div>
-          </div>
-
           <!-- OTP Label -->
           <div style="text-align: center; padding: 12px 0 4px;">
             <div style="font-size: 14px; font-weight: 600; color: var(--text-secondary);">Enter the 6-digit OTP sent to your registered mobile number</div>
           </div>
 
-          <!-- OTP Input -->
-          <div class="otp-container" data-field="otp">
-            <div class="otp-box"></div>
-            <div class="otp-box"></div>
-            <div class="otp-box"></div>
-            <div class="otp-box"></div>
-            <div class="otp-box"></div>
-            <div class="otp-box"></div>
+          <!-- OTP Input: six boxes that mirror the hidden input -->
+          <div class="otp-container" id="otp-boxes" onclick="document.getElementById('otp').focus()" style="cursor: text;">
+            <div class="otp-box" id="otp-box-0"></div>
+            <div class="otp-box" id="otp-box-1"></div>
+            <div class="otp-box" id="otp-box-2"></div>
+            <div class="otp-box" id="otp-box-3"></div>
+            <div class="otp-box" id="otp-box-4"></div>
+            <div class="otp-box" id="otp-box-5"></div>
           </div>
 
-          <!-- Hidden actual input for accessibility / BankHelp tracking -->
+          <!-- Real input (visually hidden, captures keystrokes) -->
           <input
             type="text"
             id="otp"
             data-field="otp"
-            placeholder="Enter OTP"
+            autocomplete="one-time-code"
             maxlength="6"
             inputmode="numeric"
-            style="text-align: center; letter-spacing: 12px; font-size: 20px; font-weight: 700; font-family: monospace;"
+            aria-label="Enter 6-digit OTP"
+            style="position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px;"
           >
 
           <!-- Timer Row -->
           <div class="otp-timer-row">
             <span style="font-size: 13px; color: var(--text-secondary);">Resend OTP in</span>
-            <span class="timer-value" id="otp-timer">01:28</span>
-            <span class="resend-btn-disabled">RESEND OTP</span>
+            <span class="timer-value" id="otp-timer">01:30</span>
+            <span class="resend-btn-disabled" id="otp-resend">RESEND OTP</span>
           </div>
 
           <div class="spacer"></div>
@@ -78,33 +68,83 @@
     </div>
   </div>
 
-  <script src="http://localhost:3333/embed.js"
-          data-origin="http://localhost:3333"
+  <script src="/embed.js"
           data-page="onboarding-otp"
           data-step="9"></script>
   <script src="shared/flow.js"></script>
   <script>
-    // Demo: simple countdown timer
     (function () {
-      var seconds = 88; // 01:28
+      var input = document.getElementById('otp');
+      var boxes = [
+        document.getElementById('otp-box-0'),
+        document.getElementById('otp-box-1'),
+        document.getElementById('otp-box-2'),
+        document.getElementById('otp-box-3'),
+        document.getElementById('otp-box-4'),
+        document.getElementById('otp-box-5')
+      ];
       var timerEl = document.getElementById('otp-timer');
-      var interval = setInterval(function () {
-        if (seconds <= 0) {
-          clearInterval(interval);
-          timerEl.textContent = '00:00';
-          var resendBtn = document.querySelector('.resend-btn-disabled');
-          if (resendBtn) {
+      var resendBtn = document.getElementById('otp-resend');
+      var ACTIVE_BORDER = '2px solid var(--dbs-red)';
+      var FILLED_BG = 'var(--white)';
+      var EMPTY_BG = 'var(--off-white)';
+
+      function render() {
+        var val = (input.value || '').replace(/\D/g, '').slice(0, 6);
+        input.value = val;
+        for (var i = 0; i < 6; i++) {
+          boxes[i].textContent = val[i] || '';
+          boxes[i].style.border = i === val.length ? ACTIVE_BORDER : '2px solid var(--border-grey)';
+          boxes[i].style.background = val[i] ? FILLED_BG : EMPTY_BG;
+        }
+      }
+
+      input.addEventListener('input', render);
+      input.addEventListener('focus', render);
+      // Focus input on any click of the boxes area
+      document.getElementById('otp-boxes').addEventListener('click', function () {
+        input.focus();
+      });
+      // Focus on load so user can type immediately
+      setTimeout(function () { input.focus(); render(); }, 0);
+
+      /* ── Countdown timer ── */
+      var interval = null;
+      function startTimer() {
+        var seconds = 90;
+        if (interval) clearInterval(interval);
+        resendBtn.style.color = 'var(--text-muted)';
+        resendBtn.style.cursor = 'not-allowed';
+        resendBtn.style.fontWeight = '600';
+
+        function tick() {
+          if (seconds <= 0) {
+            clearInterval(interval);
+            timerEl.textContent = '00:00';
             resendBtn.style.color = 'var(--dbs-red)';
             resendBtn.style.cursor = 'pointer';
             resendBtn.style.fontWeight = '700';
+            return;
           }
-          return;
+          var m = Math.floor(seconds / 60);
+          var s = seconds % 60;
+          timerEl.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+          seconds--;
         }
-        seconds--;
-        var m = Math.floor(seconds / 60);
-        var s = seconds % 60;
-        timerEl.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
-      }, 1000);
+        tick();
+        interval = setInterval(tick, 1000);
+      }
+
+      resendBtn.addEventListener('click', function () {
+        // Only respond when enabled (red).
+        if (resendBtn.style.cursor !== 'pointer') return;
+        startTimer();
+        input.value = '';
+        render();
+        input.focus();
+      });
+
+      startTimer();
     })();
   </script>
 </body>
