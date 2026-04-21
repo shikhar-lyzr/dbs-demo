@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
     appIsrStatus: false,
     buildActivity: false,
   },
+  async redirects() {
+    return [
+      { source: "/index.html", destination: "/demo/01-login.html", permanent: true },
+      { source: "/home", destination: "/demo/01-login.html", permanent: true },
+      { source: "/login", destination: "/demo/01-login.html", permanent: true },
+      { source: "/demo", destination: "/demo/01-login.html", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {
