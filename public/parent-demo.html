@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>digibank by DBS — Open a Savings Account</title>
+    <style>
+      body { font: 15px/1.5 system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #111; }
+      button { margin: 4px 6px 4px 0; padding: 10px 14px; cursor: pointer; border: 1px solid #d1d5db; border-radius: 8px; background: #f9fafb; font-size: 13px; }
+      button:hover { background: #f3f4f6; }
+      h1 { font-size: 24px; color: #d10014; }
+      h2 { font-size: 16px; margin-top: 28px; }
+      p.sub { color: #555; }
+      .note { background: #fff7ed; border-left: 4px solid #f59e0b; padding: 10px 14px; margin: 20px 0; font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <h1>digibank by DBS</h1>
+    <p class="sub">Demo parent page — simulates a user partway through opening a DBS savings account. Click any scenario below to tell the help widget what step the user is on, then ask it a question.</p>
+
+    <div class="note">
+      <strong>Tip:</strong> The widget (bottom-right) receives page context via <code>postMessage</code>. Each button sends a different <code>{page, step, stuckField}</code> payload. Watch the widget header update.
+    </div>
+
+    <h2>Onboarding stuck-point scenarios</h2>
+
+    <button onclick="BankHelp.update({ page: 'onboarding-aadhaar', step: 8, stuckField: 'aadhaar_virtual_id' })">
+      Step 8 · Aadhaar — how to generate Virtual ID?
+    </button>
+    <button onclick="BankHelp.update({ page: 'onboarding-otp', step: 9, stuckField: 'otp' })">
+      Step 9 · OTP — not received
+    </button>
+    <button onclick="BankHelp.update({ page: 'onboarding-account-selection', step: 16, stuckField: 'account_choice' })">
+      Step 16 · Account selection — digiSavings vs Growth Plus vs Growth Max?
+    </button>
+    <button onclick="BankHelp.update({ page: 'onboarding-fees-note', step: 17, stuckField: 'trv' })">
+      Step 17 · Fees note — what is TRV?
+    </button>
+    <button onclick="BankHelp.update({ page: 'onboarding-kyc-verification', step: 19, stuckField: 'video_kyc_hours' })">
+      Step 19 · Video KYC — outside working hours, now what?
+    </button>
+
+    <h2>Other common questions</h2>
+
+    <button onclick="BankHelp.update({ page: 'onboarding-welcome', step: 2, stuckField: 'no_pan_no_aadhaar' })">
+      Step 2 · "I don't have PAN or Aadhaar"
+    </button>
+    <button onclick="BankHelp.update({ page: 'onboarding-hub', step: 3, stuckField: 'lvb_link' })">
+      Step 3 · "I have an LVB account — should I link?"
+    </button>
+    <button onclick="BankHelp.update({ page: 'onboarding-resume', step: 6, stuckField: 'resume_later' })">
+      Step 6 · "Can I resume this application later?"
+    </button>
+
+    <script
+      src="/embed.js"
+      data-origin="http://localhost:3333"
+      data-page="onboarding-welcome"
+    ></script>
+  </body>
+</html>
