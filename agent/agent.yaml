@@ -1,7 +1,7 @@
 spec_version: "0.1.0"
-name: bank-help
+name: dbs-help
 version: 1.0.0
-description: Help users who get stuck on the DBS Bank India website (dbs.com/in) or the digibank online banking experience.
+description: Help DBS Bank India website and digibank users who get stuck on a page.
 
 model:
   preferred: "lyzr:${LYZR_AGENT_ID}@https://agent-prod.studio.lyzr.ai/v4"
