@@ -10,7 +10,7 @@
   var mountSelector = (current && current.dataset.mount) || null;
 
   var iframe = document.createElement("iframe");
-  iframe.src = origin;
+  iframe.src = origin.replace(/\/$/, "") + "/widget";
   iframe.title = "DBS Help";
   iframe.id = "bank-help-iframe";
 

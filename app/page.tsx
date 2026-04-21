@@ -1,5 +1,5 @@
-import { ChatWidget } from "@/components/ChatWidget";
+import { redirect } from "next/navigation";
 
 export default function Page() {
-  return <ChatWidget />;
+  redirect("/demo/01-login.html");
 }
