@@ -9,10 +9,9 @@ export const dynamic = "force-dynamic";
 
 import fs from "node:fs";
 
-function findAgentDir(): string {
+function findBundledAgentDir(): string {
   const candidates = [
     path.join(process.cwd(), "agent"),
-    // Netlify lambdas sometimes root at /var/task; included_files preserves tree.
     path.join(process.cwd(), ".next", "server", "agent"),
     path.resolve(__dirname ?? ".", "../../../agent"),
     path.resolve(__dirname ?? ".", "../../../../agent"),
@@ -24,7 +23,27 @@ function findAgentDir(): string {
   }
   return candidates[0];
 }
-const AGENT_DIR = findAgentDir();
+
+// Netlify/Lambda filesystem is read-only except /tmp. gitclaw mkdirs
+// <agentDir>/.gitagent on load, so copy the bundled read-only agent/ to
+// /tmp/agent once per cold start and use that.
+function prepareAgentDir(): string {
+  const bundled = findBundledAgentDir();
+  const writableRoot = process.env.NETLIFY || process.env.AWS_LAMBDA_FUNCTION_NAME
+    ? "/tmp"
+    : null;
+  if (!writableRoot) return bundled;
+  const dest = path.join(writableRoot, "agent");
+  try {
+    if (!fs.existsSync(path.join(dest, "agent.yaml"))) {
+      fs.cpSync(bundled, dest, { recursive: true });
+    }
+    return dest;
+  } catch {
+    return bundled;
+  }
+}
+const AGENT_DIR = prepareAgentDir();
 
 function resolveModel(): string {
   const agentId = process.env.LYZR_AGENT_ID;
