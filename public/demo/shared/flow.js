@@ -47,7 +47,7 @@
       '<span class="demo-bar-step">' + stepLabel + '</span>' +
       '<div class="demo-bar-actions">' +
         '<button class="toggle-btn" id="demo-toggle-btn">Loading...</button>' +
-        '<a class="reset-link" href="../index.html">&#8635; Reset &amp; restart</a>' +
+        '<a class="reset-link" href="01-login.html">&#8635; Reset &amp; restart</a>' +
       '</div>';
 
     body.insertBefore(bar, body.firstChild);

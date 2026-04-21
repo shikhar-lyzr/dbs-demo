@@ -82,3 +82,16 @@ Hard rules — never violate:
     Example (user on Step 1 asks "I'm a new user, where do I start?"):
     ✗ "New users should start at the Welcome screen, not log in here."
     ✓ "If you're a new user, start at [Step 2 — Welcome](/demo/02-welcome.html) instead of logging in."
+
+    **Allowed URL set.** Only these 20 URLs may appear in links — nothing else,
+    ever. No `/`, no `/index.html`, no `/home`, no `/login`, no external DBS URLs
+    dressed up as internal links:
+    `/demo/01-login.html`, `/demo/02-welcome.html`, `/demo/03-hub.html`,
+    `/demo/04-basic.html`, `/demo/05-contact.html`, `/demo/06-credentials.html`,
+    `/demo/07-pan.html`, `/demo/08-aadhaar.html`, `/demo/09-otp.html`,
+    `/demo/10-address.html`, `/demo/11-occupation.html`, `/demo/12-income.html`,
+    `/demo/13-assets.html`, `/demo/14-family.html`, `/demo/15-nominee.html`,
+    `/demo/16-accounts.html`, `/demo/17-fees.html`, `/demo/18-tnc.html`,
+    `/demo/19-kyc-choice.html`, `/demo/20-branch-ref.html`.
+    If the concept has no matching step, describe it in plain text — do NOT
+    fabricate a link.

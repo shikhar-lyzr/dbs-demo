@@ -12,3 +12,36 @@
 # gitclaw's loadKnowledge() can read it at runtime.
 [functions]
   included_files = ["agent/**"]
+
+# Safety-net redirects. The agent is constrained to link only to the demo
+# step URLs, but if anything slips through (/, /index.html, /home, /login,
+# bare /demo), send the user to the onboarding start instead of a 404.
+[[redirects]]
+  from = "/index.html"
+  to = "/demo/01-login.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home"
+  to = "/demo/01-login.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/login"
+  to = "/demo/01-login.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/demo"
+  to = "/demo/01-login.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/demo/"
+  to = "/demo/01-login.html"
+  status = 301
+  force = true
