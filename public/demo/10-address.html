@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Address — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-address" data-step="10">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="back-btn" onclick="history.back()">&#8592;</button>
+          <div class="header-title">Address verification</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Registration Band -->
+        <div class="registration-band">
+          <div class="band-text">Residential address and preferred branch</div>
+          <div class="avatar-placeholder">🏠</div>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content">
+
+          <!-- Confirm Residential Address -->
+          <div>
+            <div class="section-label">Confirm your residential address</div>
+            <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">
+              Your debit card will also be delivered to this address.
+            </p>
+
+            <div class="address-card" data-field="residential_address" onclick="window.demoStuck('residential_address')">
+              <div class="card-label">Current residential address</div>
+              <div class="address-card-italic">Your Aadhaar address will appear here</div>
+            </div>
+
+            <div class="change-link-row" style="margin-top: 8px;">
+              <span class="in-app-link" style="font-size: 13px; font-weight: 700;" onclick="window.demoStuck('residential_address')">CHANGE ADDRESS</span>
+            </div>
+          </div>
+
+          <!-- Preferred Branch -->
+          <div>
+            <div class="section-label" style="display: flex; align-items: center; gap: 6px;">
+              Select your preferred branch
+              <span style="font-size: 13px; cursor: help;" title="Your preferred branch for in-person support.">ℹ️</span>
+            </div>
+
+            <div class="address-card" data-field="preferred_branch" onclick="window.demoStuck('preferred_branch')">
+              <div class="card-label">Preferred branch</div>
+              <div class="address-card-italic">Tap to select your nearest branch</div>
+            </div>
+
+            <div class="change-link-row" style="margin-top: 8px;">
+              <span class="in-app-link" style="font-size: 13px; font-weight: 700;" onclick="window.demoStuck('preferred_branch')">CHANGE BRANCH</span>
+            </div>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="bottom-btn-area">
+          <button class="btn-primary" onclick="window.location.href='11-occupation.html'">NEXT</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-address"
+          data-step="10"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Important Note — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-fees-note" data-step="17">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="back-btn" onclick="history.back()">&#8592;</button>
+          <div class="header-title">Important note</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content" style="padding-top: 20px;">
+
+          <!-- Big Heading -->
+          <div class="big-heading">
+            Fund your account with &#8377;25,000 in 30 days to avail maximum benefits
+          </div>
+
+          <!-- Subtitle -->
+          <div class="sub-heading">Summary of our conditional fees:</div>
+
+          <!-- Fall-below fee card -->
+          <div
+            class="fee-card"
+            data-field="fall_below_fee"
+            onclick="window.demoStuck('fall_below_fee')"
+          >
+            <div class="fee-card-row">
+              <div style="flex: 1;">
+                <div class="fee-card-label">Deposit fall-below fee</div>
+                <div class="fee-card-desc">If monthly average balance is below &#8377;10,000</div>
+              </div>
+              <div class="fee-card-amount">
+                <div class="fee-we-charge">We Charge</div>
+                <div class="fee-amount-value">6% of shortfall</div>
+                <div class="fee-amount-value" style="font-size: 11px; font-weight: 400; color: var(--text-secondary);">Up to &#8377;500</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Debit card fee card -->
+          <div
+            class="fee-card"
+            data-field="debit_card_fee"
+            onclick="window.demoStuck('debit_card_fee')"
+          >
+            <div class="fee-card-row">
+              <div style="flex: 1;">
+                <div class="fee-card-label">Debit card fees</div>
+                <div class="fee-card-desc">
+                  If yearly spending is below &#8377;1,00,000, or monthly average balance is below &#8377;50,000 or Total Relationship Value less than &#8377;2,00,000
+                </div>
+              </div>
+              <div class="fee-card-amount">
+                <div class="fee-we-charge">We Charge</div>
+                <div class="fee-amount-value" style="font-size: 12px;">&#8377;199 annually for DBS Visa Classic card</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TRV note -->
+          <div
+            class="trv-note"
+            data-field="trv"
+            onclick="window.demoStuck('trv')"
+          >
+            TRV is across all accounts in a family and calculated by aggregating average quarterly saving account balances and end of period term deposits and investments.
+          </div>
+
+          <!-- I've read checkbox -->
+          <div class="checkbox-row">
+            <input
+              type="checkbox"
+              id="fees_read"
+              onchange="toggleContinue(this)"
+            >
+            <label for="fees_read">I've read the above carefully</label>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="bottom-btn-area">
+          <button class="btn-primary" id="continue-btn" disabled onclick="window.location.href='18-tnc.html'">CONTINUE</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-fees-note"
+          data-step="17"></script>
+  <script src="shared/flow.js"></script>
+  <script>
+    function toggleContinue(checkbox) {
+      document.getElementById('continue-btn').disabled = !checkbox.checked;
+    }
+  </script>
+</body>
+</html>

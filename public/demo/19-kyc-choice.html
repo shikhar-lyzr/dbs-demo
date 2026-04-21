@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KYC Verification — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-kyc-verification" data-step="19">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="close-btn" onclick="history.back()">&#215;</button>
+          <div class="header-title">Verification</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content" style="padding-top: 20px;">
+
+          <!-- Sub-header -->
+          <div style="text-align: center;">
+            <div style="font-size: 17px; font-weight: 700; margin-bottom: 4px;">Verify your identity</div>
+            <div style="font-size: 13px; color: var(--text-secondary);">Choose an option to complete your KYC</div>
+          </div>
+
+          <!-- HOW WOULD YOU LIKE TO PROCEED -->
+          <div class="section-sub" style="margin-top: 8px;">How would you like to proceed?</div>
+
+          <!-- Card 1: Video call (RECOMMENDED) -->
+          <div
+            class="kyc-card"
+            data-field="video_kyc_hours"
+            onclick="window.demoStuck('video_kyc_hours'); alert('Demo — Video KYC flow not implemented. In production this would launch a video call.')"
+          >
+            <div class="kyc-card-icon">📹</div>
+            <div class="kyc-card-body">
+              <div style="margin-bottom: 4px;">
+                <span class="badge-recommended">Recommended</span>
+              </div>
+              <div class="kyc-card-title">Video call</div>
+              <div class="kyc-card-desc">
+                Connect with an agent on video call and complete KYC in ~5 minutes.
+                <br><br>
+                Available on<br>
+                Mon-Fri: 9:00 am to 7:30 pm<br>
+                1st, 3rd &amp; 5th Sat: 9:00 am to 7:30 pm<br>
+                2nd &amp; 4th Sat: 9:00 am to 6:00 pm<br>
+                Excl. Sundays &amp; bank holidays
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Visit a branch -->
+          <div
+            class="kyc-card"
+            data-field="branch_visit"
+            onclick="window.demoStuck('branch_visit'); window.location.href='20-branch-ref.html'"
+          >
+            <div class="kyc-card-icon">🏦</div>
+            <div class="kyc-card-body">
+              <div class="kyc-card-title">Visit a branch</div>
+              <div class="kyc-card-desc">Find your nearest DBS branch for fingerprint verification.</div>
+            </div>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-kyc-verification"
+          data-step="19"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Details — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-basic-details" data-step="4">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="back-btn" onclick="history.back()">&#8592;</button>
+          <div class="header-title">Registration</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Registration Band -->
+        <div class="registration-band">
+          <div class="band-text">Tell us a bit about yourself</div>
+          <div class="avatar-placeholder">👤</div>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content">
+
+          <!-- Salutation -->
+          <div>
+            <div class="section-label">Salutation</div>
+            <div class="radio-inline">
+              <label class="radio-inline-item">
+                <input
+                  type="radio"
+                  name="salutation"
+                  value="Mr"
+                  data-field="salutation"
+                  onchange="window.demoStuck('salutation')"
+                >
+                <label>Mr</label>
+              </label>
+              <label class="radio-inline-item">
+                <input
+                  type="radio"
+                  name="salutation"
+                  value="Ms"
+                  data-field="salutation"
+                  onchange="window.demoStuck('salutation')"
+                >
+                <label>Ms</label>
+              </label>
+            </div>
+          </div>
+
+          <!-- Your Details as per PAN Card -->
+          <div>
+            <div class="section-label" style="display: flex; align-items: center; gap: 6px;">
+              Your Details as per PAN Card
+              <span style="font-size: 13px; cursor: help;" title="Name and date of birth must match your PAN card exactly.">ℹ️</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <input
+                type="text"
+                id="name_as_per_pan"
+                placeholder="Name as per PAN"
+                data-field="name_as_per_pan"
+                autocomplete="name"
+              >
+
+              <div class="input-with-icon">
+                <input
+                  type="text"
+                  id="dob_as_per_pan"
+                  placeholder="Date of birth as per PAN"
+                  data-field="dob_as_per_pan"
+                  autocomplete="bday"
+                >
+                <span class="input-icon">📅</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="bottom-btn-area">
+          <button class="btn-primary" onclick="window.location.href='05-contact.html'">NEXT</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-basic-details"
+          data-step="4"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

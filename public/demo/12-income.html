@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annual Income — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-income" data-step="12">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="back-btn" onclick="history.back()">&#8592;</button>
+          <div class="header-title">Registration</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Registration Band -->
+        <div class="registration-band">
+          <div class="band-text">Your annual income range please ?</div>
+          <div class="avatar-placeholder">👤</div>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content">
+
+          <!-- Info Note -->
+          <div class="info-note">
+            <span class="info-icon">ℹ️</span>
+            <span>This is a KYC requirement.</span>
+          </div>
+
+          <!-- Income Radio List -->
+          <div class="radio-list">
+            <label class="radio-item">
+              <input type="radio" name="annual_income" value="upto_1l" data-field="annual_income" onchange="window.demoStuck('annual_income')">
+              <label>Up to 1 lakh</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="annual_income" value="1l_5l" data-field="annual_income" onchange="window.demoStuck('annual_income')">
+              <label>1 lakh to 5 lakhs</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="annual_income" value="5l_15l" data-field="annual_income" onchange="window.demoStuck('annual_income')">
+              <label>5 lakhs to 15 lakhs</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="annual_income" value="15l_30l" data-field="annual_income" onchange="window.demoStuck('annual_income')">
+              <label>15 lakhs to 30 lakhs</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="annual_income" value="30l_50l" data-field="annual_income" onchange="window.demoStuck('annual_income')">
+              <label>30 lakhs to 50 lakhs</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="annual_income" value="50l_1cr" data-field="annual_income" onchange="window.demoStuck('annual_income')">
+              <label>50 lakhs to 1 crore</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="annual_income" value="above_1cr" data-field="annual_income" onchange="window.demoStuck('annual_income')">
+              <label>1 crore and above</label>
+            </label>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="bottom-btn-area">
+          <button class="btn-primary" onclick="window.location.href='13-assets.html'">NEXT</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-income"
+          data-step="12"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

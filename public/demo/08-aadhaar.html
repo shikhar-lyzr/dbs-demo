@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aadhaar — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-aadhaar" data-step="8">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="back-btn" onclick="history.back()">&#8592;</button>
+          <div class="header-title">Registration</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Registration Band -->
+        <div class="registration-band">
+          <div class="band-text">Enter your Aadhaar virtual ID or Aadhaar number</div>
+          <div class="avatar-placeholder">👤</div>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content">
+
+          <!-- Aadhaar Input -->
+          <div class="form-group">
+            <input
+              type="text"
+              id="aadhaar_virtual_id"
+              placeholder="Aadhaar or Virtual ID"
+              data-field="aadhaar_virtual_id"
+              autocomplete="off"
+              inputmode="numeric"
+            >
+          </div>
+
+          <!-- Generate Virtual ID link -->
+          <div style="text-align: left;">
+            <span class="in-app-link" style="font-size: 13px;" onclick="window.demoStuck('aadhaar_virtual_id')">Generate Aadhaar Virtual ID</span>
+          </div>
+
+          <!-- Consent Checkbox -->
+          <div class="checkbox-row" data-field="consent">
+            <input
+              type="checkbox"
+              id="consent"
+              checked
+              data-field="consent"
+              onchange="window.demoStuck('consent')"
+            >
+            <label for="consent">
+              I voluntarily authorize DBS to use my Aadhaar details for eKYC authentication and getting my KYC details from UIDAI for account opening. I indemnify DBS against all losses arising due to difference in my name on Aadhaar and PAN card, if any.
+            </label>
+          </div>
+
+          <!-- Change Language link -->
+          <div style="text-align: right;">
+            <span class="in-app-link" style="font-size: 13px;">Change Language</span>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+        <!-- Bottom Buttons -->
+        <div class="bottom-btn-area">
+          <button class="btn-primary" onclick="window.location.href='09-otp.html'">I AGREE</button>
+          <button class="btn-secondary" onclick="window.demoStuck('aadhaar_virtual_id')">I DON'T HAVE AADHAAR</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-aadhaar"
+          data-step="8"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

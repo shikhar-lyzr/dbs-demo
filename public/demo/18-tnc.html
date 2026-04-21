@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms &amp; Conditions — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-tnc" data-step="18">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="close-btn" onclick="history.back()">&#215;</button>
+          <div class="header-title">Key terms &amp; conditions</div>
+          <div style="width: 32px;"></div>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content">
+
+          <!-- Embedded T&C webview -->
+          <div class="tnc-webview">
+            <div class="tnc-webview-bar">
+              <span class="wv-dbs">DBS</span>
+              <span style="font-size: 18px; cursor: pointer;">&#9776;</span>
+              <span style="background: var(--dbs-red); color: white; border-radius: 12px; padding: 3px 12px; font-size: 12px; font-weight: 600; cursor: pointer;">Login</span>
+            </div>
+            <div class="tnc-webview-content">
+              <h3>Terms and Conditions</h3>
+              <p>
+                These Terms and Conditions are divided into multiple sections. You can find these Terms and Conditions on our website
+                <a href="https://www.dbs.com/digibank/in/terms-and-conditions.page" target="_blank" style="color: var(--dbs-red);">https://www.dbs.com/digibank/in/terms-and-conditions.page</a>.
+              </p>
+              <p>
+                Please read these Terms and Conditions carefully before accepting.
+              </p>
+              <p>
+                By clicking and accepting the Terms and Conditions you agree that you have read, understood, acknowledged and accepted these Terms and Conditions, Tariff of Schedule to access and use the digibank app and DBS Bank product and Services.
+              </p>
+
+              <h3 style="margin-top: 16px;">Definitions</h3>
+              <p>
+                <strong>Account</strong> means the savings account opened by you with DBS Bank India Limited through the digibank app or any other channel as may be made available.
+              </p>
+              <p>
+                <strong>Debit Card</strong> means the Visa Debit Card issued by DBS Bank India Limited to you for the purpose of accessing your Account.
+              </p>
+              <p>
+                <strong>digibank</strong> means the digital banking platform of DBS Bank India Limited, made available through the digibank app and related channels.
+              </p>
+              <p>
+                <strong>digibank app</strong> means the mobile application published by DBS Bank India Limited that enables you to access digibank services on a supported mobile device.
+              </p>
+            </div>
+          </div>
+
+          <!-- Agreement checkbox -->
+          <div class="checkbox-row" data-field="terms_acceptance">
+            <input
+              type="checkbox"
+              id="terms_acceptance"
+              data-field="terms_acceptance"
+              onchange="window.demoStuck('terms_acceptance'); toggleAccept(this)"
+            >
+            <label for="terms_acceptance">I agree with the terms and conditions</label>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="bottom-btn-area">
+          <button class="btn-primary" id="accept-btn" disabled onclick="window.location.href='19-kyc-choice.html'">ACCEPT</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-tnc"
+          data-step="18"></script>
+  <script src="shared/flow.js"></script>
+  <script>
+    function toggleAccept(checkbox) {
+      document.getElementById('accept-btn').disabled = !checkbox.checked;
+    }
+  </script>
+</body>
+</html>

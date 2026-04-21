@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nominee — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-nominee" data-step="15">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="back-btn" onclick="history.back()">&#8592;</button>
+          <div class="header-title">Registration</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Registration Band -->
+        <div class="registration-band">
+          <div class="band-text">Lastly, do you want to add a nominee?</div>
+          <div class="avatar-placeholder">👤</div>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content" style="gap: 16px;">
+
+          <!-- Add Nominee Card -->
+          <div
+            class="card"
+            style="cursor: pointer; border-color: var(--dbs-red);"
+            data-field="nominee"
+            onclick="window.demoStuck('nominee'); window.location.href='16-accounts.html';"
+          >
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);">Add nominee now</div>
+            <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+              Adding a nominee makes sure that your money is safe if an unforeseen event occurs. The nomination for insurance on debit card, where applicable, will be as per the nomination provided in saving account.
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="divider-or">OR</div>
+
+          <!-- Skip Nominee Card -->
+          <div
+            class="card"
+            style="cursor: pointer;"
+            data-field="skip_nominee"
+            onclick="window.demoStuck('skip_nominee'); window.location.href='16-accounts.html';"
+          >
+            <div style="font-size: 14px; font-weight: 600; color: var(--text-secondary); text-align: center; padding: 6px 0;">
+              I do not wish to assign a Nomination
+            </div>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-nominee"
+          data-step="15"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

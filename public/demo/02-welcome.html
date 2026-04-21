@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-welcome" data-step="2">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="back-btn" onclick="history.back()">&#8592;</button>
+          <div class="header-logo">
+            <div class="dbs-logo">
+              <span class="dbs-mark">DBS</span>
+              <span class="dbs-text">digibank by DBS</span>
+            </div>
+          </div>
+          <a class="skip-link" href="03-hub.html">Skip</a>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content" style="align-items: center; gap: 20px; padding-top: 20px;">
+
+          <!-- Hero Illustration -->
+          <div class="hero-placeholder" style="width: 100%;">
+            <div class="hero-icon">🏦</div>
+            <div style="font-weight: 600; color: #555;">digibank by DBS</div>
+            <div style="font-size: 11px; color: #aaa;">Illustration placeholder</div>
+          </div>
+
+          <!-- Headline -->
+          <p class="welcome-headline">
+            One-App for all your payment needs including UPI, NEFT &amp; RTGS
+          </p>
+
+          <!-- Pagination Dots -->
+          <div class="pagination-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+
+          <!-- Fine print -->
+          <p class="fine-print">
+            If you wish to open an account without PAN and Aadhaar or with CKYC, or do not wish to avail debit card, please visit your nearest DBS branch. Available in select cities.
+          </p>
+
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="bottom-btn-area">
+          <button class="btn-primary" onclick="window.location.href='03-hub.html'">LET'S GET STARTED</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-welcome"
+          data-step="2"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

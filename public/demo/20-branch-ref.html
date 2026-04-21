@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Branch Reference — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-branch-reference" data-step="20">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="close-btn" onclick="history.back()">&#215;</button>
+          <div class="header-title" style="flex: 1; text-align: center;">DBS Bank</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content" style="padding-top: 16px;">
+
+          <!-- Branch Address Card -->
+          <div class="card" data-field="reference_code">
+            <div class="card-label">Address</div>
+            <div style="font-size: 14px; font-weight: 600; color: var(--text-primary); line-height: 1.6; margin-top: 4px;">
+              NO 27/2 &amp; 27/33, FIRST FLOOR, 8TH MILE TUMKUR ROADT DASARAHALLI, 560057
+            </div>
+          </div>
+
+          <!-- Reference Code -->
+          <div class="reference-code-display" data-field="reference_code" onclick="window.demoStuck('reference_code')">
+            <div class="reference-code-label">Reference code</div>
+            <div class="reference-code-value">55475592</div>
+          </div>
+
+          <!-- What's coming up next -->
+          <div>
+            <div style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; text-align: center;">
+              Here's what's coming up next!
+            </div>
+
+            <div class="steps-visual">
+
+              <!-- Step 1: Visit your chosen branch -->
+              <div class="step-visual-item">
+                <div class="step-visual-icon-col">
+                  <div class="step-visual-circle">🏦</div>
+                  <div class="step-visual-line"></div>
+                </div>
+                <div class="step-visual-content">
+                  <div class="step-visual-title">Visit your chosen branch</div>
+                  <div class="step-visual-desc">Check your nearby branch info above &amp; visit us at your convenience.</div>
+                </div>
+              </div>
+
+              <!-- Step 2: Show your Reference code -->
+              <div class="step-visual-item">
+                <div class="step-visual-icon-col">
+                  <div class="step-visual-circle">🔢</div>
+                  <div class="step-visual-line"></div>
+                </div>
+                <div class="step-visual-content">
+                  <div class="step-visual-title">Show your Reference code</div>
+                  <div class="step-visual-desc">Show your verification code given above for identification purposes.</div>
+                </div>
+              </div>
+
+              <!-- Step 3: Complete your KYC -->
+              <div class="step-visual-item">
+                <div class="step-visual-icon-col">
+                  <div class="step-visual-circle">✅</div>
+                </div>
+                <div class="step-visual-content">
+                  <div class="step-visual-title">Complete your KYC</div>
+                  <div class="step-visual-desc">And you're done! You will receive an SMS when your account is verified.</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="spacer" style="min-height: 16px;"></div>
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="bottom-btn-area">
+          <button class="btn-secondary" onclick="history.back()">CHANGE VERIFICATION METHOD</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-branch-reference"
+          data-step="20"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

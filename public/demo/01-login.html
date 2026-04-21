@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-login" data-step="1">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- Login Header -->
+        <div class="login-header">
+          <div class="login-dbs-x">DBS</div>
+          <div class="login-app-name">digibank by DBS</div>
+        </div>
+
+        <!-- Login Form -->
+        <div class="screen-content" style="padding-top: 28px;">
+          <div class="form-group">
+            <input
+              type="text"
+              id="username"
+              placeholder="Username"
+              data-field="username"
+              autocomplete="username"
+            >
+          </div>
+
+          <div class="form-group">
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              data-field="password"
+              autocomplete="current-password"
+            >
+          </div>
+
+          <div style="text-align: center; padding: 4px 0;">
+            <a class="text-link" href="#">Trouble logging in?</a>
+          </div>
+
+          <div class="spacer" style="min-height: 20px;"></div>
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="bottom-btn-area">
+          <button class="btn-primary" onclick="window.location.href='02-welcome.html'">LOGIN</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-login"
+          data-step="1"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

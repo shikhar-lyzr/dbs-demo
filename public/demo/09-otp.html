@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTP Verification — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-otp" data-step="9">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="back-btn" onclick="history.back()">&#8592;</button>
+          <div class="header-title">Registration</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content">
+
+          <!-- SMS Notification Bar (demo — shows OTP for walkthrough) -->
+          <div class="sms-notification">
+            <div class="sms-header">
+              <span class="sms-sender">JD-DBSBNK-S · now</span>
+              <span class="sms-time">now</span>
+            </div>
+            <div class="sms-body">
+              Your DBS digibank OTP is <span class="sms-otp">686866</span>. Valid for 90 seconds. Do not share this OTP with anyone.
+            </div>
+          </div>
+
+          <!-- OTP Label -->
+          <div style="text-align: center; padding: 12px 0 4px;">
+            <div style="font-size: 14px; font-weight: 600; color: var(--text-secondary);">Enter the 6-digit OTP sent to your registered mobile number</div>
+          </div>
+
+          <!-- OTP Input -->
+          <div class="otp-container" data-field="otp">
+            <div class="otp-box"></div>
+            <div class="otp-box"></div>
+            <div class="otp-box"></div>
+            <div class="otp-box"></div>
+            <div class="otp-box"></div>
+            <div class="otp-box"></div>
+          </div>
+
+          <!-- Hidden actual input for accessibility / BankHelp tracking -->
+          <input
+            type="text"
+            id="otp"
+            data-field="otp"
+            placeholder="Enter OTP"
+            maxlength="6"
+            inputmode="numeric"
+            style="text-align: center; letter-spacing: 12px; font-size: 20px; font-weight: 700; font-family: monospace;"
+          >
+
+          <!-- Timer Row -->
+          <div class="otp-timer-row">
+            <span style="font-size: 13px; color: var(--text-secondary);">Resend OTP in</span>
+            <span class="timer-value" id="otp-timer">01:28</span>
+            <span class="resend-btn-disabled">RESEND OTP</span>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="bottom-btn-area">
+          <button class="btn-primary" onclick="window.location.href='10-address.html'">NEXT</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-otp"
+          data-step="9"></script>
+  <script src="shared/flow.js"></script>
+  <script>
+    // Demo: simple countdown timer
+    (function () {
+      var seconds = 88; // 01:28
+      var timerEl = document.getElementById('otp-timer');
+      var interval = setInterval(function () {
+        if (seconds <= 0) {
+          clearInterval(interval);
+          timerEl.textContent = '00:00';
+          var resendBtn = document.querySelector('.resend-btn-disabled');
+          if (resendBtn) {
+            resendBtn.style.color = 'var(--dbs-red)';
+            resendBtn.style.cursor = 'pointer';
+            resendBtn.style.fontWeight = '700';
+          }
+          return;
+        }
+        seconds--;
+        var m = Math.floor(seconds / 60);
+        var s = seconds % 60;
+        timerEl.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+      }, 1000);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAN Details — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-pan" data-step="7">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="back-btn" onclick="history.back()">&#8592;</button>
+          <div class="header-title">Registration</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Registration Band -->
+        <div class="registration-band">
+          <div class="band-text">Enter your PAN details</div>
+          <div class="avatar-placeholder">👤</div>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content">
+
+          <!-- Info Note -->
+          <div class="info-note">
+            <span class="info-icon">ℹ️</span>
+            <span>For your data security, we need you to re-enter these information to process your application.</span>
+          </div>
+
+          <!-- Your Details Section -->
+          <div>
+            <div class="section-label">Your Details as per PAN Card</div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <input
+                type="text"
+                id="pan_number"
+                placeholder="PAN number"
+                data-field="pan_number"
+                autocomplete="off"
+                style="text-transform: uppercase;"
+              >
+              <input
+                type="text"
+                id="name_pan"
+                placeholder="Name as per PAN"
+                data-field="pan_number"
+                autocomplete="name"
+              >
+              <div class="input-with-icon">
+                <input
+                  type="text"
+                  id="dob_pan"
+                  placeholder="Date of birth as per PAN"
+                  data-field="pan_number"
+                  autocomplete="bday"
+                >
+                <span class="input-icon">📅</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAN-Aadhaar link note -->
+          <div class="info-note">
+            <span class="info-icon">ℹ️</span>
+            <span>
+              As per regulations, please ensure your PAN and Aadhaar are linked to continue account opening.&nbsp;
+              <span class="in-app-link">How to link PAN with Aadhaar</span>
+            </span>
+          </div>
+
+          <!-- Tax Residency -->
+          <div data-field="tax_residency">
+            <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 10px;">
+              If you are an Indian citizen and a tax resident of India and of no other country, tap NEXT.
+            </p>
+            <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+              If you are a <span class="in-app-link" onclick="window.demoStuck('tax_residency')">tax resident</span> of one or more countries other than India, which includes being US citizen/Green card holder, <span class="in-app-link" onclick="window.demoStuck('tax_residency')">tap here</span>.
+            </p>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+        <!-- Bottom Buttons -->
+        <div class="bottom-btn-area">
+          <button class="btn-primary" onclick="window.location.href='08-aadhaar.html'">NEXT</button>
+          <button class="btn-secondary" onclick="alert('Branch-only path — see knowledge base')">DON'T HAVE PAN NUMBER</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-pan"
+          data-step="7"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

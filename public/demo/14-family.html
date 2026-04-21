@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Details — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-family" data-step="14">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="back-btn" onclick="history.back()">&#8592;</button>
+          <div class="header-title">Registration</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Registration Band -->
+        <div class="registration-band">
+          <div class="band-text">Tell us About your family</div>
+          <div class="avatar-placeholder">👨‍👩‍👧</div>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content">
+
+          <!-- Info Note -->
+          <div class="info-note">
+            <span class="info-icon">ℹ️</span>
+            <span>This is a KYC requirement.</span>
+          </div>
+
+          <!-- Father's Name -->
+          <div class="form-group">
+            <input
+              type="text"
+              id="father_name"
+              placeholder="Father's Name"
+              data-field="father_name"
+              autocomplete="off"
+            >
+          </div>
+
+          <!-- Mother's Name -->
+          <div class="form-group">
+            <input
+              type="text"
+              id="mother_name"
+              placeholder="Mother's Name"
+              data-field="mother_name"
+              autocomplete="off"
+            >
+          </div>
+
+          <!-- Marital Status -->
+          <div class="form-group">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border: 1px solid var(--border-grey);
+                border-radius: 6px;
+                padding: 11px 12px;
+                cursor: pointer;
+                background: var(--white);
+              "
+              data-field="marital_status"
+              onclick="window.demoStuck('marital_status')"
+            >
+              <span style="color: var(--text-muted); font-size: 14px;">Marital status</span>
+              <span style="color: var(--text-secondary); font-size: 18px;">&#8250;</span>
+            </div>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="bottom-btn-area">
+          <button class="btn-primary" onclick="window.location.href='15-nominee.html'">SUBMIT</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-family"
+          data-step="14"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

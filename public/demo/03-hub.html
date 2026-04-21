@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Hub — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-hub" data-step="3">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <div class="header-logo" style="justify-content: center; width: 100%;">
+            <div class="dbs-logo">
+              <span class="dbs-mark">DBS</span>
+              <span class="dbs-text">digibank by DBS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content" style="padding-top: 20px;">
+
+          <!-- Link Account Card -->
+          <div
+            class="hub-link-card"
+            data-field="link_account"
+            onclick="window.demoStuck('link_account')"
+          >
+            <div class="hub-link-title">LINK ACCOUNT</div>
+            <div class="hub-link-desc">To link LVB or DBS account, Tap here</div>
+          </div>
+
+          <!-- Apply New Products Section -->
+          <div class="hub-section-header">Apply new products</div>
+
+          <!-- Open Savings Account -->
+          <a
+            class="hub-product-card"
+            href="04-basic.html"
+            data-field="open_savings"
+            onfocus="window.demoStuck('open_savings')"
+            onclick="window.demoStuck('open_savings')"
+          >
+            <div class="hub-product-icon">💰</div>
+            <div class="hub-product-body">
+              <div class="hub-product-title">OPEN A SAVINGS ACCOUNT</div>
+              <div class="hub-product-desc">Get high interest rate and exciting benefits on a range of DBS Savings Accounts</div>
+            </div>
+          </a>
+
+          <!-- Personal Loan -->
+          <div
+            class="hub-product-card"
+            data-field="personal_loan"
+            onclick="window.demoStuck('personal_loan')"
+            style="cursor: pointer;"
+          >
+            <div class="hub-product-icon">💳</div>
+            <div class="hub-product-body">
+              <div class="hub-product-title">GET A PERSONAL LOAN</div>
+              <div class="hub-product-desc">Apply for personal loan with digiSavings account</div>
+            </div>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+        <!-- Bottom: LOG IN TO DIGIBANK -->
+        <div class="hub-bottom">
+          <button class="btn-primary" onclick="window.location.href='01-login.html'">LOG IN TO DIGIBANK</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-hub"
+          data-step="3"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Details — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-contact" data-step="5">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="back-btn" onclick="history.back()">&#8592;</button>
+          <div class="header-title">Registration</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Registration Band -->
+        <div class="registration-band">
+          <div class="band-text">How do we reach you?</div>
+          <div class="avatar-placeholder">👤</div>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content">
+
+          <!-- Info Note -->
+          <div class="info-note">
+            <span class="info-icon">ℹ️</span>
+            <span>Your contact details are safe with us and will not be shared with any third party.</span>
+          </div>
+
+          <!-- Mobile Number -->
+          <div class="form-group">
+            <div class="input-with-prefix">
+              <span class="input-prefix">+91</span>
+              <input
+                type="tel"
+                id="mobile_number"
+                placeholder="Mobile Number"
+                data-field="mobile_number"
+                autocomplete="tel"
+              >
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <input
+              type="email"
+              id="email"
+              placeholder="Email address"
+              data-field="email"
+              autocomplete="email"
+            >
+          </div>
+
+          <!-- Re-enter Email -->
+          <div class="form-group">
+            <input
+              type="email"
+              id="email_confirm"
+              placeholder="Re-enter email address"
+              data-field="email_confirm"
+              autocomplete="off"
+            >
+          </div>
+
+          <!-- Referral Code -->
+          <div class="form-group">
+            <input
+              type="text"
+              id="referral_code"
+              placeholder="Referral Code"
+              data-field="referral_code"
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="bottom-btn-area">
+          <button class="btn-primary" onclick="window.location.href='06-credentials.html'">NEXT</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-contact"
+          data-step="5"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

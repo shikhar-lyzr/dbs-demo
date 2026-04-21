@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DBS digibank — Demo Walkthrough</title>
+  <link rel="stylesheet" href="shared/style.css">
+  <style>
+    body { background: #f0f0f0; }
+    .entry-body { background: #f0f0f0; }
+  </style>
+</head>
+<body class="entry-body" data-page="demo-index" data-step="0">
+
+  <div class="entry-container">
+    <div class="dbs-demo-badge">
+      <span class="dbs-mark">DBS</span>
+      <span>digibank by DBS &mdash; India</span>
+    </div>
+
+    <h1 class="entry-title">Savings Account Onboarding Demo</h1>
+    <p class="entry-subtitle">
+      This is a static mockup of DBS digibank's savings account onboarding flow. Click through the 20 steps to see how the help widget adapts to each screen.
+    </p>
+
+    <div class="entry-cta-group">
+      <a class="entry-cta-btn" href="01-login.html">▶ Start from login (step 1)</a>
+      <a class="entry-cta-btn secondary" href="02-welcome.html">▶ Start at welcome (step 2)</a>
+    </div>
+
+    <div class="jump-select-row">
+      <label for="jump-select">Jump to step:</label>
+      <select id="jump-select" onchange="if(this.value) window.location.href = this.value;">
+        <option value="">— select a step —</option>
+        <option value="01-login.html">Step 1 — Login</option>
+        <option value="02-welcome.html">Step 2 — Welcome</option>
+        <option value="03-hub.html">Step 3 — Product Hub</option>
+        <option value="04-basic.html">Step 4 — Basic Details</option>
+        <option value="05-contact.html">Step 5 — Contact Details</option>
+        <option value="06-credentials.html">Step 6 — Set Credentials</option>
+        <option value="07-pan.html">Step 7 — PAN Details</option>
+        <option value="08-aadhaar.html">Step 8 — Aadhaar</option>
+        <option value="09-otp.html">Step 9 — OTP Verification</option>
+        <option value="10-address.html">Step 10 — Address</option>
+        <option value="11-occupation.html">Step 11 — Occupation</option>
+        <option value="12-income.html">Step 12 — Annual Income</option>
+        <option value="13-assets.html">Step 13 — Financial Assets</option>
+        <option value="14-family.html">Step 14 — Family Details</option>
+        <option value="15-nominee.html">Step 15 — Nominee</option>
+        <option value="16-accounts.html">Step 16 — Account Selection</option>
+        <option value="17-fees.html">Step 17 — Fees Note</option>
+        <option value="18-tnc.html">Step 18 — Terms &amp; Conditions</option>
+        <option value="19-kyc-choice.html">Step 19 — KYC Verification</option>
+        <option value="20-branch-ref.html">Step 20 — Branch Reference</option>
+      </select>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="demo-index"
+          data-step="0"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>

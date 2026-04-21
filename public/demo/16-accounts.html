@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Selection — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-account-selection" data-step="16">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="back-btn" onclick="history.back()">&#8592;</button>
+          <div class="header-title">Account Selection</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Registration Band -->
+        <div class="registration-band">
+          <div class="band-text">Our recommendations</div>
+          <div class="avatar-placeholder">💼</div>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content">
+
+          <div class="account-cards-wrapper">
+
+            <!-- Card 1: digiSavings -->
+            <div
+              class="account-card"
+              id="card-digisavings"
+              data-field="digisavings"
+              onclick="window.demoStuck('digisavings'); selectAccount('digisavings')"
+            >
+              <div class="account-card-header" style="background: #333355;">
+                <div class="account-card-name">digiSavings</div>
+                <div class="account-card-mab">Monthly Average Balance &#8377;10,000</div>
+              </div>
+              <div class="account-card-body">
+                <div class="account-card-section-title">You will get:</div>
+                <div class="account-card-you-get">
+                  <ul>
+                    <li>Grow your savings with our attractive interest rates</li>
+                    <li>Up to &#8377;25,000 worth of benefits on funding account with &#8377;25,000</li>
+                    <li>Cheque book (on request)</li>
+                  </ul>
+                </div>
+                <div class="account-card-section-title">Account benefits:</div>
+                <ul class="account-card-benefits">
+                  <li>Enjoy competitive Interest on Fixed deposits, instant personal loans, paperless investments and much more</li>
+                  <li>Quick and easy digital payments with Scan &amp; Pay, UPI and Bill Pay</li>
+                  <li>Universal Banking Remote - Link and manage all your bank accounts</li>
+                  <li>Exclusive offers on Debit card</li>
+                </ul>
+                <button class="account-card-cta" onclick="window.demoStuck('digisavings'); window.location.href='17-fees.html'">Get digiSavings</button>
+              </div>
+            </div>
+
+            <!-- Card 2: DBS Growth Plus (RECOMMENDED) -->
+            <div
+              class="account-card"
+              id="card-growth-plus"
+              data-field="growth_plus"
+              onclick="window.demoStuck('growth_plus'); selectAccount('growth_plus')"
+            >
+              <div class="account-card-header" style="background: var(--dbs-dark);">
+                <div style="margin-bottom: 4px;">
+                  <span class="badge-recommended">Recommended</span>
+                </div>
+                <div class="account-card-name">DBS Growth Plus</div>
+                <div class="account-card-mab">Monthly Average Balance &#8377;25,000</div>
+              </div>
+              <div class="account-card-body">
+                <div class="account-card-section-title">You will get:</div>
+                <div class="account-card-you-get">
+                  <ul>
+                    <li>Attractive interest rate* on Savings Account</li>
+                    <li>Exclusive offers on Visa Debit card</li>
+                    <li>Unlimited Domestic DBS ATM transactions</li>
+                    <li>Invest in ready-made basket of mutual funds through digiPortfolio</li>
+                  </ul>
+                </div>
+                <div class="account-card-section-title">Account benefits:</div>
+                <ul class="account-card-benefits">
+                  <li>Enjoy competitive Interest on Fixed deposits, instant personal loans, paperless investments and much more</li>
+                  <li>Maintain &#8377;25,000 MAB in next month of account opening to get &#8377;250 Amazon Pay Gift Card</li>
+                  <li>Spend &#8377;10,000 on Debit Card by following month of account opening to get Lifestyle offers</li>
+                  <li>Spend &#8377;30,000 on Debit Card by the end of 3rd month, following account opening to get Times Prime membership</li>
+                </ul>
+                <button class="account-card-cta" onclick="window.demoStuck('growth_plus'); window.location.href='17-fees.html'">Get DBS Growth Plus</button>
+              </div>
+            </div>
+
+            <!-- Card 3: DBS Growth Max -->
+            <div
+              class="account-card"
+              id="card-growth-max"
+              data-field="growth_max"
+              onclick="window.demoStuck('growth_max'); selectAccount('growth_max')"
+            >
+              <div class="account-card-header" style="background: #1a3a5c;">
+                <div class="account-card-name">DBS Growth Max</div>
+                <div class="account-card-mab">Monthly Average Balance &#8377;1,00,000</div>
+              </div>
+              <div class="account-card-body">
+                <div class="account-card-section-title">You will get:</div>
+                <div class="account-card-you-get">
+                  <ul>
+                    <li>Attractive interest rate* on Savings Account</li>
+                    <li>Free Fund transfer, RTGS, NEFT, IMPS and UPI</li>
+                    <li>Unlimited Domestic DBS ATM transactions</li>
+                    <li>Effortless online International transfers through digibank</li>
+                  </ul>
+                </div>
+                <div class="account-card-section-title">Account benefits:</div>
+                <ul class="account-card-benefits">
+                  <li>Enjoy competitive Interest on Fixed deposits, instant personal loans, paperless investments and much more</li>
+                  <li>Maintain &#8377;1,00,000 MAB in next month of account opening to get &#8377;250 Amazon Pay Gift Card</li>
+                  <li>Spend &#8377;5,000 on Debit Card by following month of account opening to get Lifestyle offers</li>
+                  <li>Spend &#8377;20,000 on Debit Card by the end of 3rd month, following account opening to get Times Prime membership</li>
+                </ul>
+                <button class="account-card-cta" onclick="window.demoStuck('growth_max'); window.location.href='17-fees.html'">Get DBS Growth Max</button>
+              </div>
+            </div>
+
+          </div><!-- /.account-cards-wrapper -->
+
+          <div class="spacer" style="min-height: 16px;"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-account-selection"
+          data-step="16"></script>
+  <script src="shared/flow.js"></script>
+  <script>
+    function selectAccount(type) {
+      document.querySelectorAll('.account-card').forEach(function (c) { c.classList.remove('selected'); });
+      var card = document.getElementById('card-' + type.replace('_', '-'));
+      if (card) card.classList.add('selected');
+    }
+  </script>
+</body>
+</html>

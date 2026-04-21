@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Occupation — DBS digibank</title>
+  <link rel="stylesheet" href="shared/style.css">
+</head>
+<body class="mode-phone" data-page="onboarding-occupation" data-step="11">
+
+  <div class="page-wrapper">
+    <div class="phone-frame">
+      <div class="phone-screen">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <button class="back-btn" onclick="history.back()">&#8592;</button>
+          <div class="header-title">Registration</div>
+          <button class="chat-icon">💬</button>
+        </div>
+
+        <!-- Registration Band -->
+        <div class="registration-band">
+          <div class="band-text">What is your occupation?</div>
+          <div class="avatar-placeholder">👤</div>
+        </div>
+
+        <!-- Screen Content -->
+        <div class="screen-content">
+
+          <!-- Info Note -->
+          <div class="info-note">
+            <span class="info-icon">ℹ️</span>
+            <span>This is a KYC requirement.</span>
+          </div>
+
+          <!-- Occupation Radio List -->
+          <div class="radio-list">
+            <label class="radio-item">
+              <input type="radio" name="occupation" value="service_govt" data-field="occupation" onchange="window.demoStuck('occupation')">
+              <label>Service — Government Sector</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="occupation" value="service_pvt" data-field="occupation" onchange="window.demoStuck('occupation')">
+              <label>Service — Private Sector</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="occupation" value="service_pub" data-field="occupation" onchange="window.demoStuck('occupation')">
+              <label>Service — Public Sector</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="occupation" value="professional" data-field="occupation" onchange="window.demoStuck('occupation')">
+              <label>Professional</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="occupation" value="homemaker" data-field="occupation" onchange="window.demoStuck('occupation')">
+              <label>Homemaker</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="occupation" value="retired" data-field="occupation" onchange="window.demoStuck('occupation')">
+              <label>Retired</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="occupation" value="student" data-field="occupation" onchange="window.demoStuck('occupation')">
+              <label>Student</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="occupation" value="business" data-field="occupation" onchange="window.demoStuck('occupation')">
+              <label>Business</label>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="occupation" value="self_employed" data-field="occupation" onchange="window.demoStuck('occupation')">
+              <label>Self-employed</label>
+            </label>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="bottom-btn-area">
+          <button class="btn-primary" onclick="window.location.href='12-income.html'">NEXT</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3333/embed.js"
+          data-origin="http://localhost:3333"
+          data-page="onboarding-occupation"
+          data-step="11"></script>
+  <script src="shared/flow.js"></script>
+</body>
+</html>
